@@ -10,6 +10,11 @@ let currentQuestion = {
 };
 console.log("currentQuestion: ", currentQuestion);
 
+// HTML elements
+const quizDiv = document.querySelector(".quiz-area");
+const questionElement = document.querySelector(".question");
+const optionBtns = document.querySelectorAll(".option");
+
 /**
  * retrieve a random question from questions array
  * @returns question object
@@ -22,6 +27,12 @@ function getQuestion() {
 
 function updateQuestionUI() {
   // fill the placeholders of question with the current question
+  questionElement.innerText = currentQuestion.question;
+  let i = 0;
+  optionBtns.forEach((btn) => {
+    btn.innerText = currentQuestion.options[i++];
+  });
 }
-getQuestion();
-console.log("getQuestion(): ", getQuestion());
+currentQuestion = getQuestion();
+console.log("currentQuestion: ", currentQuestion);
+updateQuestionUI();
