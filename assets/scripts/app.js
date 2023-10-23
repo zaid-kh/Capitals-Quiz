@@ -36,3 +36,17 @@ function updateQuestionUI() {
 currentQuestion = getQuestion();
 console.log("currentQuestion: ", currentQuestion);
 updateQuestionUI();
+
+function checkAnswer(opt) {
+  if (opt === currentQuestion.answer) return true;
+  return false;
+}
+
+function optionHandler() {
+  console.log("this.innerText: ", this.innerText);
+  console.log(checkAnswer(this.innerText));
+}
+
+optionBtns.forEach((btn) => {
+  btn.addEventListener("click", optionHandler);
+});
